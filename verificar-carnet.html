@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verificación de carnet — T.R.A.U.D.E. TOUR</title>
+<meta name="description" content="Verificá si un conductor pertenece a T.R.A.U.D.E. TOUR y está habilitado, escaneando el código QR de su carnet digital." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="assets/images/traude_logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<!--
+  Página de verificación del carnet digital (destino del código QR del carnet).
+
+  Por qué existe así: la Edge Function de Supabase que arma el resultado real
+  (verificar-carnet) vive en el dominio *.supabase.co, y ese dominio fuerza el
+  Content-Type de las respuestas a text/plain sin importar lo que la función
+  declare -- limitación conocida de la plataforma, sin arreglo salvo pagar por
+  un dominio propio para las Edge Functions (github.com/orgs/supabase/discussions/35627).
+  Como esta página SÍ se sirve con el Content-Type correcto (GitHub Pages),
+  le pide los datos a la función por fetch() y los muestra dentro de un
+  <iframe srcdoc="...">, que renderiza el HTML recibido sin importarle el
+  header original de la función.
+
+  TODO (pendiente, a propósito -- ver memoria del proyecto): el QR de la app
+  Flutter (SupabaseConfig.urlVerificacionCarnet) todavía apunta a
+  https://eliasgonzalez685.github.io/tapepy/verificar-carnet.html -- eso era
+  momentáneo. Cuando Traude Web esté publicado (repo + GitHub Pages / dominio
+  propio), hay que actualizar esa constante en el código Flutter para que
+  apunte acá, a esta página con el diseño real de Traude.
+-->
+<style>
+  .verificacion-envoltorio {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+  }
+  .verificacion-estado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--gris);
+    min-height: 320px;
+  }
+  .verificacion-spinner {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 3px solid #e5e0d8;
+    border-top-color: var(--rojo);
+    animation: girar-spinner 0.8s linear infinite;
+    margin-bottom: 16px;
+  }
+  @keyframes girar-spinner {
+    to { transform: rotate(360deg); }
+  }
+  .verificacion-resultado {
+    display: none;
+    border: 0;
+    width: 100%;
+    height: 560px;
+  }
+  .verificacion-marca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    background: var(--crema);
+    border-top: 1px solid rgba(22, 24, 29, 0.08);
+    font-size: 0.85rem;
+    color: var(--gris);
+  }
+  .verificacion-marca img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<header class="encabezado">
+  <div class="contenedor">
+    <a href="index.html" class="marca">
+      <img src="assets/images/traude_logo.png" alt="T.R.A.U.D.E. TOUR" />
+      <div class="marca-texto">
+        <strong>T.R.A.U.D.E. TOUR</strong>
+        <span>Transporte Alternativo</span>
+      </div>
+    </a>
+
+    <nav class="nav-principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="galeria.html">Galería</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="acciones-header">
+      <a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20reservar%20un%20traslado" target="_blank" rel="noopener" class="boton boton-primario">
+        Reservar
+      </a>
+      <button class="boton-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="encabezado-pagina">
+  <div class="contenedor">
+    <span class="etiqueta-seccion">Verificación de carnet</span>
+    <h1>¿Este conductor pertenece a T.R.A.U.D.E. TOUR?</h1>
+    <p>Esta página confirma en el momento si el conductor está asociado, habilitado y al día — escaneando el QR de su carnet digital.</p>
+  </div>
+</div>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="verificacion-envoltorio aparecer">
+      <div id="verificacion-cargando" class="verificacion-estado">
+        <div class="verificacion-spinner"></div>
+        <div>Verificando carnet…</div>
+      </div>
+      <iframe id="verificacion-resultado" class="verificacion-resultado" title="Resultado de verificación"></iframe>
+      <div class="verificacion-marca">
+        <img src="assets/images/traude_logo.png" alt="" />
+        <span>Verificación conectada en tiempo real con la base de socios de T.R.A.U.D.E. TOUR.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="contenedor">
+    <h2>¿Necesitás coordinar un viaje?</h2>
+    <p>Escribinos y te conectamos con un conductor asociado y verificado.</p>
+    <a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20coordinar%20un%20viaje" target="_blank" rel="noopener" class="boton boton-oscuro">
+      Coordinar mi viaje
+    </a>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="grid-pie">
+      <div>
+        <div class="pie-marca">
+          <img src="assets/images/traude_logo.png" alt="T.R.A.U.D.E. TOUR" />
+          <strong>T.R.A.U.D.E. TOUR</strong>
+        </div>
+        <p style="font-size:0.85rem; max-width: 280px;">Transporte alternativo en la Triple Frontera. Traslado de mercaderías, turismo y traslados individuales o grupales entre Ciudad del Este, Foz do Iguaçu y Puerto Iguazú.</p>
+      </div>
+
+      <div>
+        <h4>Sitio</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <p style="font-size:0.85rem; margin-bottom:10px;">Ciudad del Este, Alto Paraná, Paraguay.</p>
+        <p style="font-size:0.85rem;">+595 993 501 230</p>
+        <p style="font-size:0.85rem;">traudeturismo.oficial@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="pie-inferior">
+      <span>© 2026 T.R.A.U.D.E. TOUR — Todos los derechos reservados.</span>
+      <span>Sitio en construcción — contenido de referencia</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/595993501230" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.51 2 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.19-.31a8.16 8.16 0 0 1-1.26-4.35c0-4.52 3.68-8.19 8.2-8.19 2.19 0 4.25.85 5.8 2.4a8.14 8.14 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.15 8.2z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+  // Misma lógica que docs/verificar-carnet.html del repo de la app (tapepy):
+  // le pide el resultado a la Edge Function y lo muestra en un iframe.
+  (function () {
+    var FUNCION_URL = 'https://rydpjayylntksqrwimmn.supabase.co/functions/v1/verificar-carnet';
+    var cargando = document.getElementById('verificacion-cargando');
+    var iframe = document.getElementById('verificacion-resultado');
+
+    function mostrarError() {
+      cargando.innerHTML =
+        '<div style="font-size:40px;margin-bottom:10px;">⚠️</div>' +
+        '<div>No se pudo verificar el carnet.<br>Revisá tu conexión e intentá de nuevo.</div>';
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var token = params.get('token');
+
+    if (!token) {
+      cargando.innerHTML =
+        '<div style="font-size:40px;margin-bottom:10px;">📷</div>' +
+        '<div>Escaneá el código QR del carnet de un conductor<br>para verificar su estado acá.</div>';
+    } else {
+      fetch(FUNCION_URL + '?token=' + encodeURIComponent(token))
+        .then(function (respuesta) {
+          if (!respuesta.ok) throw new Error('respuesta no ok');
+          return respuesta.text();
+        })
+        .then(function (html) {
+          iframe.srcdoc = html;
+          cargando.style.display = 'none';
+          iframe.style.display = 'block';
+        })
+        .catch(mostrarError);
+    }
+  })();
+</script>
+</body>
+</html>

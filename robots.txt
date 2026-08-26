@@ -1,0 +1,7 @@
+# T.R.A.U.D.E. TOUR
+User-agent: *
+Allow: /
+Disallow: /verificar-carnet.html
+
+# TODO: cuando el sitio esté publicado, agregar la línea del sitemap con la URL real:
+# Sitemap: https://TU-DOMINIO-O-GITHUB-PAGES/sitemap.xml

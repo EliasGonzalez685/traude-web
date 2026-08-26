@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contacto — T.R.A.U.D.E. TOUR</title>
+<meta name="description" content="Contactá a T.R.A.U.D.E. TOUR para cotizaciones, alianzas o consultas sobre transporte en la Triple Frontera." />
+<meta name="keywords" content="TRAUDE, TRAUDE TOUR, contacto, WhatsApp traslados Ciudad del Este, reservar traslado, viajes Triple Frontera, servicios de transporte, tour Foz do Iguaçu, tour Puerto Iguazú, tour Cataratas del Iguazú, tour Itaipú, transporte alternativo contacto" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="T.R.A.U.D.E. TOUR" />
+<meta property="og:title" content="Contacto — T.R.A.U.D.E. TOUR" />
+<meta property="og:description" content="Escribinos para cotizaciones, alianzas o cualquier consulta sobre tu viaje." />
+<meta property="og:image" content="assets/images/traude_banner.jpg" />
+<meta property="og:locale" content="es_PY" />
+<link rel="icon" type="image/png" href="assets/images/traude_logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="encabezado">
+  <div class="contenedor">
+    <a href="index.html" class="marca">
+      <img src="assets/images/traude_logo.png" alt="T.R.A.U.D.E. TOUR" />
+      <div class="marca-texto">
+        <strong>T.R.A.U.D.E. TOUR</strong>
+        <span>Transporte Alternativo</span>
+      </div>
+    </a>
+
+    <nav class="nav-principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="galeria.html">Galería</a>
+      <a href="contacto.html" class="activo">Contacto</a>
+    </nav>
+
+    <div class="acciones-header">
+      <div class="redes-header oculto-movil" style="display:flex;">
+        <a href="https://instagram.com/traude.oficial" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="mailto:traudeturismo.oficial@gmail.com" aria-label="Correo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+        </a>
+      </div>
+      <a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20reservar%20un%20traslado" target="_blank" rel="noopener" class="boton boton-primario">
+        Reservar
+      </a>
+      <button class="boton-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="encabezado-pagina">
+  <div class="contenedor">
+    <span class="etiqueta-seccion">Contacto</span>
+    <h1>Estamos para ayudarte</h1>
+    <p>Escribinos para cotizaciones, alianzas o cualquier consulta sobre tu viaje.</p>
+  </div>
+</div>
+
+<section class="seccion">
+  <div class="contenedor grid-contacto">
+
+    <div class="aparecer">
+      <form class="formulario" id="formulario-contacto">
+        <!-- El formulario no manda correo: al completarlo y enviarlo, arma un mensaje
+             con todos los datos y abre WhatsApp (número del presidente de asociación)
+             con ese mensaje ya cargado, listo para mandar. -->
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellido *</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div class="campo">
+          <label for="telefono">Número de teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+595 9xx xxx xxx" />
+        </div>
+        <div class="campo">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="campo">
+          <label for="empresa">Empresa (opcional)</label>
+          <input type="text" id="empresa" name="empresa" />
+        </div>
+        <div class="campo">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+        <button type="submit" class="boton boton-whatsapp" style="width:100%; justify-content:center;">
+          Enviar por WhatsApp
+        </button>
+        <p class="nota-formulario" id="formulario-estado">Al completar el formulario y enviarlo, se abre WhatsApp con tu mensaje ya armado.</p>
+      </form>
+    </div>
+
+    <div class="aparecer">
+      <div class="tarjeta-contacto">
+        <h3>T.R.A.U.D.E. TOUR</h3>
+
+        <div class="dato-contacto">
+          <div class="icono">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <strong>Dirección</strong>
+            <!-- TODO: reemplazar por la dirección real -->
+            <span>Ciudad del Este, Alto Paraná, Paraguay.</span>
+          </div>
+        </div>
+
+        <div class="dato-contacto">
+          <div class="icono">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <strong>Teléfono / WhatsApp</strong>
+            <!-- TODO: reemplazar por el número real -->
+            <a href="https://wa.me/595993501230" target="_blank" rel="noopener">+595 993 501 230</a>
+          </div>
+        </div>
+
+        <div class="dato-contacto">
+          <div class="icono">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <!-- TODO: reemplazar por el Gmail real -->
+            <a href="mailto:traudeturismo.oficial@gmail.com">traudeturismo.oficial@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="dato-contacto">
+          <div class="icono">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <strong>Horario de atención</strong>
+            <span>Lunes a sábado: 07:00 a 20:00hs.<br>Urgencias y traslados: 24hs.</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20coordinar%20un%20viaje" target="_blank" rel="noopener" class="boton boton-whatsapp" style="width:100%; justify-content:center; margin-top:10px;">
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="grid-pie">
+      <div>
+        <div class="pie-marca">
+          <img src="assets/images/traude_logo.png" alt="T.R.A.U.D.E. TOUR" />
+          <strong>T.R.A.U.D.E. TOUR</strong>
+        </div>
+        <p style="font-size:0.85rem; max-width: 280px;">Transporte alternativo en la Triple Frontera. Traslado de mercaderías, turismo y traslados individuales o grupales entre Ciudad del Este, Foz do Iguaçu y Puerto Iguazú.</p>
+        <p style="font-size:1rem; margin: 4px 0 12px;"><span class="banderas"><svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg" aria-label="Paraguay"><rect width="18" height="4" fill="#D52B1E"/><rect width="18" height="4" y="4" fill="#FFFFFF"/><rect width="18" height="4" y="8" fill="#0038A8"/></svg><svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg" aria-label="Brasil"><rect width="18" height="12" fill="#009739"/><polygon points="9,1.4 16.6,6 9,10.6 1.4,6" fill="#FEDD00"/><circle cx="9" cy="6" r="2.6" fill="#012169"/></svg><svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg" aria-label="Argentina"><rect width="18" height="4" fill="#75AADB"/><rect width="18" height="4" y="4" fill="#FFFFFF"/><rect width="18" height="4" y="8" fill="#75AADB"/><circle cx="9" cy="6" r="1.3" fill="#F6B40E"/></svg></span></p>
+        <div class="pie-redes">
+          <a href="https://instagram.com/traude.oficial" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://wa.me/595993501230" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.51 2 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.19-.31a8.16 8.16 0 0 1-1.26-4.35c0-4.52 3.68-8.19 8.2-8.19 2.19 0 4.25.85 5.8 2.4a8.14 8.14 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.15 8.2z"/></svg>
+          </a>
+          <a href="mailto:traudeturismo.oficial@gmail.com" aria-label="Correo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Traslado%20de%20mercader%C3%ADas" target="_blank" rel="noopener">Traslado de mercaderías</a></li>
+          <li><a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Turismo" target="_blank" rel="noopener">Turismo</a></li>
+          <li><a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Traslados%20individuales%20o%20grupales" target="_blank" rel="noopener">Traslados individuales/grupales</a></li>
+          <li><a href="https://wa.me/595993501230?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20planes%20diarios%2C%20semanales%20o%20mensuales" target="_blank" rel="noopener">Planes diarios/semanales/mensuales</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Sitio</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <p style="font-size:0.85rem; margin-bottom:10px;">Ciudad del Este, Alto Paraná, Paraguay.</p>
+        <p style="font-size:0.85rem;">+595 993 501 230</p>
+        <p style="font-size:0.85rem;">traudeturismo.oficial@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="pie-inferior">
+      <span>© 2026 T.R.A.U.D.E. TOUR — Todos los derechos reservados.</span>
+      <span>Sitio en construcción — contenido de referencia</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/595993501230" target="_blank" rel="noopener" class="whatsapp-flotante" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.51 2 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.19-.31a8.16 8.16 0 0 1-1.26-4.35c0-4.52 3.68-8.19 8.2-8.19 2.19 0 4.25.85 5.8 2.4a8.14 8.14 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.15 8.2z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+  // El formulario no manda correo: arma un mensaje con los datos cargados y
+  // abre WhatsApp (número del presidente de asociación) con ese mensaje listo
+  // para enviar. Los campos "required" del HTML ya impiden que esto se dispare
+  // si el formulario no está completo (el navegador bloquea el submit antes).
+  const WHATSAPP_DESTINO = "595993501230"; // mismo número usado en el resto del sitio
+
+  const formularioContacto = document.getElementById("formulario-contacto");
+  const estadoFormulario = document.getElementById("formulario-estado");
+
+  formularioContacto.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Chequeo explícito además del "required" del HTML: si falta algo
+    // obligatorio, no se arma ni se abre nada, se marca el campo y se corta acá.
+    if (!formularioContacto.checkValidity()) {
+      formularioContacto.reportValidity();
+      return;
+    }
+
+    const datos = new FormData(formularioContacto);
+    const nombre = (datos.get("nombre") || "").trim();
+    const telefono = (datos.get("telefono") || "").trim();
+    const email = (datos.get("email") || "").trim();
+    const empresa = (datos.get("empresa") || "").trim();
+    const mensaje = (datos.get("mensaje") || "").trim();
+
+    let texto = "Hola, soy " + nombre + ", te escribo desde la web de T.R.A.U.D.E. TOUR.\n";
+    if (telefono) texto += "Teléfono: " + telefono + "\n";
+    texto += "Email: " + email + "\n";
+    if (empresa) texto += "Empresa: " + empresa + "\n";
+    texto += "Mensaje: " + mensaje;
+
+    const url = "https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent(texto);
+    window.open(url, "_blank", "noopener");
+
+    estadoFormulario.textContent = "Se abrió WhatsApp con tu mensaje listo para enviar.";
+    formularioContacto.reset();
+  });
+</script>
+</body>
+</html>
