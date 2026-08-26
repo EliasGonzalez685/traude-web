@@ -72,10 +72,6 @@ h1, h2, h3, h4 {
   padding: 0 24px;
 }
 
-.oculto-movil {
-  display: none;
-}
-
 /* ---------- Botones ---------- */
 .boton {
   display: inline-flex;
@@ -1122,7 +1118,7 @@ h1, h2, h3, h4 {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 78px;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--crema);
@@ -1130,6 +1126,80 @@ h1, h2, h3, h4 {
     gap: 18px;
     box-shadow: var(--sombra);
     border-bottom: 1px solid rgba(22, 24, 29, 0.06);
+  }
+
+  /* Encabezado: más compacto y con margen para respirar en pantallas
+     angostas -- antes el ícono de redes sociales quedaba forzado a
+     mostrarse (bug de un style inline) y empujaba todo, incluido el
+     botón de menú, fuera del ancho visible. */
+  .encabezado .contenedor {
+    height: auto;
+    min-height: 66px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+
+  .marca {
+    gap: 10px;
+  }
+
+  .marca img {
+    height: 38px;
+    width: 38px;
+  }
+
+  .marca-texto strong {
+    font-size: 0.95rem;
+  }
+
+  .marca-texto span {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .acciones-header {
+    gap: 8px;
+  }
+
+  .acciones-header .boton-primario {
+    padding: 9px 16px;
+    font-size: 0.8rem;
+  }
+
+  /* Hero: sin forzar casi toda la altura de pantalla (eso dejaba un
+     salto largo y vacío antes de la franja de confianza) y botones
+     apilados a todo el ancho, más fáciles de tocar. */
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero-etiqueta {
+    margin-bottom: 18px;
+    font-size: 0.72rem;
+    padding: 7px 14px;
+  }
+
+  .hero h1 {
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    margin-bottom: 28px;
+  }
+
+  .hero-botones {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 0;
+  }
+
+  .hero-botones .boton {
+    justify-content: center;
+    width: 100%;
   }
 
   .franja-confianza .contenedor {
